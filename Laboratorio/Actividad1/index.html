@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase1 - 202110206</title>
+  <script src="./tau-prolog.js"></script>
+</head>
+<body>
+  <h1>Actividad 1 - Introducción a Lógica e Inferencia - IA1</h1>
+  <h3>Nombre: Julio Alejandro Zaldaña Ríos - Carnet: 202110206 </h3>
+  <script>
+    const session = pl.create(1000);
+
+    session.consult(`
+        padre(juan, maria).
+        padre(juan, jose).
+        madre(ana, maria).
+        madre(ana, jose).
+        padre(carlos, juan).
+        madre(luisa, juan).
+
+
+        hermano(X, Y) :- padre(P, X), padre(P, Y), X \\= Y.
+        abuelo(X, Y) :- padre(X, Z), padre(Z, Y).
+    `, {
+        success: function() { console.log('Programa cargado correctamente') },
+        error: function() { console.log('Error al cargar el programa') }
+    });
+
+    session.query("abuelo(carlos, maria).", {
+        success: function() { console.log('Consulta cargada correctamente') },
+        error: function() { console.log('Error al cargar la consulta') }
+    });
+
+    session.answer({
+        success: function(answer) { alert('Si es el abuelo'); },
+        fail: function() { alert('No es el abuelo');},
+        error: function(err) { console.log(err); },
+        limit: function() { console.log('Limite excedido'); }
+    });
+  </script>
+</body>
+</html>
