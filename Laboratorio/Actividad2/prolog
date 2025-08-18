@@ -1,0 +1,7 @@
+padre(juan, maria).
+padre(juan, jose).
+padre(juan, ana).
+madre(ana, maria).
+madre(ana, jose).
+
+hermano(X, Y) :- padre(P, X), padre(P, Y), X \= Y.
