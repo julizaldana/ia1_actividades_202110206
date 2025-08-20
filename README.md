@@ -5,3 +5,5 @@
 
 
 * [Tarea 1 - agentes](./Tarea1/main.go)
+* [Tarea 2 - Algoritmos](./Tarea2/)
+* [Practica 1 - Puzzle 8 Interactivo con Algoritmos](./Practica1/)
